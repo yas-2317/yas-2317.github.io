@@ -302,6 +302,27 @@
       line-height: 1.6;
       max-width: 80ch;
     }
+      /* ---- FIX: Japanese line breaks ---- */
+  :lang(ja) {
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: break-word;  /* anywhere を殺す */
+    hyphens: none;
+  }
+  
+  /* hero/本文で anywhere/keep-all を上書き */
+  :lang(ja) .hero h1,
+  :lang(ja) .hero p,
+  :lang(ja) .container,
+  :lang(ja) p,
+  :lang(ja) h1,
+  :lang(ja) h2,
+  :lang(ja) h3,
+  :lang(ja) li,
+  :lang(ja) a {
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
   </style>
 </head>
 
