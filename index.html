@@ -63,7 +63,7 @@
     [data-lang="ja"] .lang-en { display:none !important; }
     [data-lang="en"] .lang-ja { display:none !important; }
 
-    /* ✅ FIX: Japanese wrapping (anywhere対策) */
+    /* ✅ FIX: Japanese wrapping */
     :lang(ja){
       line-break: strict;
       word-break: normal;
@@ -153,6 +153,31 @@
       border-color: rgba(230,238,249,0.25);
     }
 
+    /* ✅ Added: top-level policy links (common PP/Terms) */
+    .policy-links{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap: wrap;
+    }
+    .policy-links a{
+      border: 1px solid rgba(230,238,249,0.12);
+      background: rgba(230,238,249,0.04);
+      color: rgba(230,238,249,0.85);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background .15s, border-color .15s, color .15s, transform .08s;
+    }
+    .policy-links a:hover{
+      border-color: rgba(230,238,249,0.28);
+      background: rgba(230,238,249,0.07);
+      color: var(--primary);
+    }
+    .policy-links a:active{ transform: translateY(1px); }
+
     /* ── HERO ── */
     .hero{
       margin-top: 56px;
@@ -168,21 +193,14 @@
       color: rgba(159,178,204,0.85);
     }
 
-    /* ✅ FIX: headline wrap control */
     .headline{
       font-size: clamp(2.1rem, 4.5vw, 3.4rem);
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.18;
-
-      /* ここがポイント：幅制限しすぎない */
       max-width: 1040px;
     }
-
-    /* 日本語見出しは “、” で折れやすくする。途中分断はしない */
-    .headline .cut{
-      white-space: nowrap; /* 「すぐ終わらせる。」を割らない */
-    }
+    .headline .cut{ white-space: nowrap; }
 
     .lead{
       max-width: 760px;
@@ -226,7 +244,6 @@
       width: 220px;
       height: 220px;
       border-radius: 999px;
-      filter: blur(0px);
       opacity: 0.45;
       pointer-events:none;
     }
@@ -337,8 +354,18 @@
       </div>
 
       <div class="topbar-right">
-        <div class="tagline-pill lang-ja">Simple. Useful. Quiet.</div>
+        <div class="tagline-pill lang-ja">シンプルだけど、役に立つ。</div>
         <div class="tagline-pill lang-en">Simple. Useful. Quiet.</div>
+
+        <!-- ✅ Added: common PP/Terms links -->
+        <div class="policy-links" aria-label="Policies">
+          <a href="/privacy.html">
+            <span class="lang-ja">プライバシー</span><span class="lang-en">Privacy</span>
+          </a>
+          <a href="/terms.html">
+            <span class="lang-ja">利用規約</span><span class="lang-en">Terms</span>
+          </a>
+        </div>
 
         <div class="lang-toggle" aria-label="Language">
           <button type="button" class="btn-ja" onclick="QT_setLang('ja')">JP</button>
@@ -351,7 +378,6 @@
       <div class="kicker lang-ja">SIMPLE • USEFUL • QUIET</div>
       <div class="kicker lang-en">SIMPLE • USEFUL • QUIET</div>
 
-      <!-- ✅ FIX: 「すぐ終わらせる。」を割らない -->
       <h1 class="headline lang-ja">
         日頃の細かくて忘れやすいタスクを、<span class="cut">すぐ終わらせる。</span>
       </h1>
@@ -361,7 +387,7 @@
 
       <p class="lead lang-ja">
         余計な機能は増やさず、必要なことだけを速く終わらせる。<br />
-        Quiet Tools はシンプルで小さなツールを作っています。
+        Quiet Tools は「静かに効く」小さなツールを作っています。
       </p>
       <p class="lead lang-en">
         No bloat. Just the essentials—done quickly.<br />
@@ -379,7 +405,7 @@
           <span>DarumaKnock</span>
         </div>
 
-        <h3 class="lang-ja">いらないサブスク、だるま落とし。</h3>
+        <h3 class="lang-ja">固定費を、だるま落とし。</h3>
         <h3 class="lang-en">Knock out the extras.</h3>
 
         <p class="lang-ja">
