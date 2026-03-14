@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用規約 / Terms of Service — TravelGuard</title>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const fromQuery = params.get("lang");
+      const saved = localStorage.getItem("qt_lang");
+      const lang = (fromQuery === "en" || fromQuery === "ja") ? fromQuery : (saved || "ja");
+      function apply(next) {
+        document.documentElement.setAttribute("data-lang", next);
+        localStorage.setItem("qt_lang", next);
+      }
+      window.QT_setLang = function (next) {
+        const url = new URL(location.href);
+        url.searchParams.set("lang", next);
+        history.replaceState(null, "", url.toString());
+        apply(next);
+      };
+      apply(lang);
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0B1220; --card: #0F1A2F; --border: #1E335A;
+      --accent: #22C55E; --primary: #E6EEF9; --secondary: #9FB2CC;
+      --warning-bg: #1a1500; --warning-border: #F59E0B;
+    }
+    body { background: var(--bg); color: var(--primary); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.7; }
+    a { color: var(--accent); }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; border-bottom: 1px solid var(--border);
+      gap: 16px; flex-wrap: wrap;
+    }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--primary); }
+    .nav-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .nav-links { display: flex; gap: 24px; font-size: 0.9rem; }
+    .nav-links a { color: var(--secondary); text-decoration: none; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .lang-toggle { display: flex; gap: 8px; align-items: center; }
+    .lang-toggle button {
+      appearance: none; border: 1px solid var(--border); background: transparent;
+      color: var(--secondary); border-radius: 999px; padding: 8px 12px;
+      font-size: 0.85rem; cursor: pointer; transition: color .15s, border-color .15s, background .15s;
+    }
+    .lang-toggle button:hover { color: var(--primary); border-color: rgba(230,238,249,0.35); }
+    html[data-lang="ja"] .btn-ja,
+    html[data-lang="en"] .btn-en {
+      background: rgba(230,238,249,0.08); color: var(--primary); border-color: rgba(230,238,249,0.25);
+    }
+
+    [data-lang="ja"] .lang-en { display: none !important; }
+    [data-lang="en"] .lang-ja { display: none !important; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .meta { color: var(--secondary); font-size: 0.85rem; margin-bottom: 48px; }
+    h2 { font-size: 1rem; font-weight: 700; margin: 36px 0 10px; color: var(--primary); }
+    h3 { font-size: 0.93rem; font-weight: 700; margin: 20px 0 6px; color: var(--primary); }
+    p { color: var(--secondary); font-size: 0.93rem; margin-bottom: 12px; }
+    ul { color: var(--secondary); font-size: 0.93rem; margin: 0 0 12px 20px; }
+    ul li { margin-bottom: 6px; }
+
+    .callout {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px;
+      font-size: 0.9rem; color: var(--secondary); margin: 14px 0;
+    }
+    .callout.warning {
+      background: var(--warning-bg); border-color: var(--warning-border); color: var(--primary);
+    }
+    .callout.warning strong { color: #F59E0B; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 28px 40px;
+      display: flex; justify-content: space-between; font-size: 0.85rem;
+      color: var(--secondary); flex-wrap: wrap; gap: 12px;
+    }
+    footer a { color: var(--secondary); text-decoration: none; }
+    footer a:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TravelGuard</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="support.html"><span class="lang-ja">サポート</span><span class="lang-en">Support</span></a>
+        <a href="privacy.html"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy</span></a>
+        <a href="terms.html"><span class="lang-ja">利用規約</span><span class="lang-en">Terms</span></a>
+      </div>
+      <div class="lang-toggle" aria-label="Language">
+        <button type="button" class="btn-ja" onclick="QT_setLang('ja')">JP</button>
+        <button type="button" class="btn-en" onclick="QT_setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="lang-ja">
+      <h1>利用規約</h1>
+      <p class="meta">有効日: 2026年3月1日</p>
+
+      <p>TravelGuard（以下「本アプリ」）をご利用いただくことで、本利用規約に同意したものとみなされます。同意いただけない場合は、本アプリのご利用をお控えください。</p>
+
+      <h2>本アプリの性質と重要な注意事項</h2>
+      <h3>旅行リスク管理ツールについて</h3>
+      <p>本アプリは、旅行前のリスク確認・チェックリスト管理を補助するツールです。本アプリが提供するリスク情報・チェック項目は参考情報であり、各旅行の安全・リスク管理についての最終判断はユーザー自身が行ってください。</p>
+
+      <div class="callout warning">
+        <strong>重要：</strong> 本アプリが提供するリスク情報・危険度評価は、外務省その他の公的機関による最新の情報を保証するものではありません。渡航前には必ず公的機関の最新情報をご確認ください。
+      </div>
+
+      <h3>通知について</h3>
+      <p>リマインダー通知機能はデバイスのローカル通知を使用しています。通知のタイミングについて正確性を保証するものではありません。</p>
+
+      <h2>免責事項</h2>
+      <h3>情報提供のみ</h3>
+      <p>本アプリが提供するコンテンツはあくまで参考情報であり、旅行・安全・保険・法律に関する専門的なアドバイスを構成するものではありません。渡航に関する決定はすべてユーザー自身の責任において行ってください。</p>
+
+      <h3>現状のまま提供（As-Is）</h3>
+      <p>本アプリは「現状のまま」提供されます。動作の継続性、特定目的への適合性、正確性について、明示または黙示を問わず、いかなる保証もいたしません。</p>
+
+      <h3>機能の変更</h3>
+      <p>開発者は本アプリの機能・コンテンツをいつでも予告なく変更、追加、削除することができます。</p>
+
+      <h2>知的財産権</h2>
+      <p>本アプリおよびそのコンテンツに関する知的財産権はすべて開発者に帰属します。無断での複製・転載・商業利用を禁止します。</p>
+
+      <h2>規約の変更</h2>
+      <p>本規約は将来変更される場合があります。重要な変更がある場合は、アプリのアップデートまたは本ページにて通知します。変更後も継続してご利用いただいた場合、変更後の規約に同意したものとみなされます。</p>
+
+      <h2>準拠法</h2>
+      <p>本規約は日本法に準拠し、解釈されるものとします。</p>
+
+      <h2>お問い合わせ</h2>
+      <p>本規約に関するご質問は、<a href="support.html">サポートページ</a>のお問い合わせフォームよりご連絡ください。</p>
+    </div>
+
+    <div class="lang-en">
+      <h1>Terms of Service</h1>
+      <p class="meta">Effective Date: March 1, 2026</p>
+
+      <p>By using TravelGuard ("the App"), you agree to these Terms of Service. If you do not agree, please discontinue use of the App.</p>
+
+      <h2>Nature of the App and Important Notice</h2>
+      <h3>Travel Risk Management Tool</h3>
+      <p>The App is a tool to help you review travel risks and manage checklists before a trip. Risk information and checklist items are provided for reference only. All final decisions regarding safety and risk management are the user's sole responsibility.</p>
+
+      <div class="callout warning">
+        <strong>Important:</strong> Risk information provided by the App does not guarantee accuracy or currency with official government travel advisories. Always check the latest information from official sources before traveling.
+      </div>
+
+      <h3>Notifications</h3>
+      <p>Reminder notifications use the device's local notification system. The App does not guarantee the exact timing of notifications.</p>
+
+      <h2>Disclaimer of Warranties</h2>
+      <h3>Informational Purposes Only</h3>
+      <p>Content provided by the App is for reference only and does not constitute professional advice on travel, safety, insurance, or law. All travel decisions are made at the user's own risk and responsibility.</p>
+
+      <h3>Provided "As Is"</h3>
+      <p>The App is provided "as is" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or accuracy.</p>
+
+      <h3>Feature Changes</h3>
+      <p>The developer reserves the right to modify, add, or remove features at any time without prior notice.</p>
+
+      <h2>Intellectual Property</h2>
+      <p>All intellectual property rights in the App and its content are owned by the developer. Reproduction, redistribution, or commercial use without permission is prohibited.</p>
+
+      <h2>Changes to These Terms</h2>
+      <p>These Terms may be updated in the future. We will notify you of any material changes via an app update or on this page. Continued use of the App after changes constitutes your acceptance of the revised Terms.</p>
+
+      <h2>Governing Law</h2>
+      <p>These Terms are governed by and construed in accordance with the laws of Japan.</p>
+
+      <h2>Contact</h2>
+      <p>For questions about these Terms, please use the contact form on the <a href="support.html">Support page</a>.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 TravelGuard</span>
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <a href="index.html"><span class="lang-ja">トップ</span><span class="lang-en">Home</span></a>
+      <a href="support.html"><span class="lang-ja">サポート</span><span class="lang-en">Support</span></a>
+      <a href="privacy.html"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy</span></a>
+    </div>
+  </footer>
+
+</body>
+</html>
