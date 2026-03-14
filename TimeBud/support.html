@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サポート — TimeBud</title>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const fromQuery = params.get("lang");
+      const saved = localStorage.getItem("qt_lang");
+      const lang = (fromQuery === "en" || fromQuery === "ja") ? fromQuery : (saved || "ja");
+      function apply(next) {
+        document.documentElement.setAttribute("data-lang", next);
+        localStorage.setItem("qt_lang", next);
+      }
+      window.QT_setLang = function (next) {
+        const url = new URL(location.href);
+        url.searchParams.set("lang", next);
+        history.replaceState(null, "", url.toString());
+        apply(next);
+      };
+      apply(lang);
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0B1220; --card: #0F1A2F; --border: #1E335A;
+      --accent: #3B82F6; --primary: #E6EEF9; --secondary: #9FB2CC;
+    }
+    body { background: var(--bg); color: var(--primary); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    a { color: var(--accent); }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; border-bottom: 1px solid var(--border);
+      gap: 16px; flex-wrap: wrap;
+    }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--primary); }
+    .nav-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .nav-links { display: flex; gap: 24px; font-size: 0.9rem; }
+    .nav-links a { color: var(--secondary); text-decoration: none; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .lang-toggle { display: flex; gap: 8px; align-items: center; }
+    .lang-toggle button {
+      appearance: none; border: 1px solid var(--border); background: transparent;
+      color: var(--secondary); border-radius: 999px; padding: 8px 12px;
+      font-size: 0.85rem; cursor: pointer; transition: color .15s, border-color .15s, background .15s;
+    }
+    .lang-toggle button:hover { color: var(--primary); border-color: rgba(230,238,249,0.35); }
+    html[data-lang="ja"] .btn-ja,
+    html[data-lang="en"] .btn-en {
+      background: rgba(230,238,249,0.08); color: var(--primary); border-color: rgba(230,238,249,0.25);
+    }
+
+    [data-lang="ja"] .lang-en { display: none !important; }
+    [data-lang="en"] .lang-ja { display: none !important; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .subtitle { color: var(--secondary); margin-bottom: 48px; }
+
+    .faq-section h2 {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+    details {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    }
+    details[open] { border-color: var(--accent); }
+    summary {
+      padding: 18px 20px; font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--accent); font-size: 1.2rem; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    .faq-answer {
+      padding: 16px 20px 18px; font-size: 0.9rem; color: var(--secondary); line-height: 1.7;
+      border-top: 1px solid var(--border);
+    }
+    .faq-answer strong { color: var(--primary); }
+
+    .contact-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; text-align: center;
+    }
+    .contact-box h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .contact-box p { color: var(--secondary); font-size: 0.9rem; margin-bottom: 24px; }
+    .contact-btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.95rem; padding: 13px 28px;
+      border-radius: 10px; text-decoration: none; transition: opacity .15s;
+    }
+    .contact-btn:hover { opacity: .85; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 28px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.85rem; color: var(--secondary); flex-wrap: wrap; gap: 12px;
+    }
+    footer a { color: var(--secondary); text-decoration: none; }
+    footer a:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TimeBud</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="support.html"><span class="lang-ja">サポート</span><span class="lang-en">Support</span></a>
+        <a href="privacy.html"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy</span></a>
+      </div>
+      <div class="lang-toggle" aria-label="Language">
+        <button type="button" class="btn-ja" onclick="QT_setLang('ja')">JP</button>
+        <button type="button" class="btn-en" onclick="QT_setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="lang-ja">
+      <h1>サポート</h1>
+      <p class="subtitle">よくある質問と使い方のガイドです。</p>
+
+      <div class="faq-section">
+        <h2>よくある質問</h2>
+        <div class="faq-list">
+
+          <details>
+            <summary>どんな場面で使うアプリですか？</summary>
+            <div class="faq-answer">
+              海外の取引先やリモートチームとの<strong>日程調整</strong>に最適です。候補時間を入力すると、相手のタイムゾーンに変換済みのメッセージブロックが生成され、そのままメール・Slackに貼れます。
+            </div>
+          </details>
+
+          <details>
+            <summary>対応しているタイムゾーンはどれくらいありますか？</summary>
+            <div class="faq-answer">
+              世界主要都市のタイムゾーンに対応しています。iOS標準のタイムゾーンデータを使用しているため、<strong>サマータイムにも自動対応</strong>します。
+            </div>
+          </details>
+
+          <details>
+            <summary>生成されるメッセージの言語は選べますか？</summary>
+            <div class="faq-answer">
+              はい。日本語・英語のどちらでもメッセージを生成できます。アプリ内で言語を切り替えられます。
+            </div>
+          </details>
+
+          <details>
+            <summary>データはどこに保存されますか？</summary>
+            <div class="faq-answer">
+              テンプレートや保存した相手先情報は<strong>iPhone内にのみ保存</strong>されます。外部サーバーへの送信は行いません。
+            </div>
+          </details>
+
+          <details>
+            <summary>アカウント登録は必要ですか？</summary>
+            <div class="faq-answer">
+              不要です。ダウンロードしてすぐ使えます。
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <div class="contact-box">
+        <h2>解決しない場合はこちら</h2>
+        <p>お問い合わせフォームからご連絡ください。<br>通常2〜3営業日以内にご返信します。</p>
+        <a href="https://forms.gle/jWpUFdAt5yMJEkno7" class="contact-btn">お問い合わせフォームを開く</a>
+        <!-- TODO: Google Form の URL に差し替える -->
+      </div>
+    </div>
+
+    <div class="lang-en">
+      <h1>Support</h1>
+      <p class="subtitle">FAQs and a quick guide to using TimeBud.</p>
+
+      <div class="faq-section">
+        <h2>FAQs</h2>
+        <div class="faq-list">
+
+          <details>
+            <summary>What is TimeBud best used for?</summary>
+            <div class="faq-answer">
+              TimeBud is ideal for <strong>scheduling across time zones</strong>—with overseas clients, remote teams, or international contacts. Enter your available times, and it generates a ready-to-send message block with the recipient's local times.
+            </div>
+          </details>
+
+          <details>
+            <summary>How many time zones are supported?</summary>
+            <div class="faq-answer">
+              All major world time zones are supported using iOS's built-in time zone data, which means <strong>daylight saving time is handled automatically</strong>.
+            </div>
+          </details>
+
+          <details>
+            <summary>Can I choose the message language?</summary>
+            <div class="faq-answer">
+              Yes. You can generate messages in Japanese or English. Switch the language from within the app.
+            </div>
+          </details>
+
+          <details>
+            <summary>Where is my data stored?</summary>
+            <div class="faq-answer">
+              Saved templates and contacts are stored <strong>only on your iPhone</strong>. No data is sent to external servers.
+            </div>
+          </details>
+
+          <details>
+            <summary>Do I need to create an account?</summary>
+            <div class="faq-answer">
+              No. Download and start using it immediately—no sign-up required.
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <div class="contact-box">
+        <h2>Still need help?</h2>
+        <p>Contact us via the form below.<br>We typically reply within 2–3 business days.</p>
+        <a href="https://forms.gle/jWpUFdAt5yMJEkno7" class="contact-btn">Open contact form</a>
+        <!-- TODO: Replace with your Google Form URL -->
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 TimeBud</span>
+    <div style="display:flex; gap:20px;">
+      <a href="index.html"><span class="lang-ja">トップ</span><span class="lang-en">Home</span></a>
+      <a href="privacy.html"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy</span></a>
+    </div>
+  </footer>
+
+</body>
+</html>
