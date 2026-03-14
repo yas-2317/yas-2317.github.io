@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サポート — Quiet Tools</title>
+  <meta name="description" content="Quiet Tools サポートページ。各プロダクトへのリンクとお問い合わせフォームをご利用ください。" />
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const fromQuery = params.get("lang");
+      const saved = localStorage.getItem("qt_lang");
+      const lang = (fromQuery === "en" || fromQuery === "ja") ? fromQuery : (saved || "ja");
+      function apply(next) {
+        document.documentElement.setAttribute("data-lang", next);
+        localStorage.setItem("qt_lang", next);
+      }
+      window.QT_setLang = function (next) {
+        const url = new URL(location.href);
+        url.searchParams.set("lang", next);
+        history.replaceState(null, "", url.toString());
+        apply(next);
+      };
+      apply(lang);
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0B1220; --card: #0F1A2F; --border: #1E335A;
+      --accent: #3B82F6; --primary: #E6EEF9; --secondary: #9FB2CC;
+    }
+    body {
+      background: var(--bg); color: var(--primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    [data-lang="ja"] .lang-en { display: none !important; }
+    [data-lang="en"] .lang-ja { display: none !important; }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; border-bottom: 1px solid var(--border);
+      gap: 16px; flex-wrap: wrap;
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .nav-home { color: var(--secondary); font-size: 0.9rem; white-space: nowrap; }
+    .nav-home:hover { color: var(--primary); text-decoration: none; }
+    .nav-logo { font-weight: 900; letter-spacing: -0.02em; white-space: nowrap; }
+    .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .lang-toggle { display: flex; gap: 8px; align-items: center; }
+    .lang-toggle button {
+      appearance: none; border: 1px solid rgba(230,238,249,0.18);
+      background: transparent; color: var(--secondary);
+      border-radius: 999px; padding: 8px 12px; font-size: 0.85rem;
+      cursor: pointer; transition: background .15s, color .15s, border-color .15s, transform .08s;
+    }
+    .lang-toggle button:hover { color: var(--primary); border-color: rgba(230,238,249,0.35); }
+    .lang-toggle button:active { transform: translateY(1px); }
+    html[data-lang="ja"] .btn-ja,
+    html[data-lang="en"] .btn-en {
+      background: rgba(230,238,249,0.08); color: var(--primary); border-color: rgba(230,238,249,0.25);
+    }
+
+    @media (max-width: 520px) { nav { padding: 16px 18px; } }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: 2rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .subtitle { color: var(--secondary); margin-bottom: 48px; }
+
+    /* product links */
+    .products { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap; text-decoration: none;
+      transition: border-color .15s, background .15s;
+    }
+    .product-card:hover { border-color: rgba(230,238,249,0.3); background: rgba(15,26,47,1); text-decoration: none; }
+    .product-name { font-weight: 700; font-size: 1rem; color: var(--primary); }
+    .product-desc { font-size: 0.88rem; color: var(--secondary); margin-top: 4px; }
+    .product-arrow { color: var(--secondary); font-size: 1.1rem; flex-shrink: 0; }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    }
+
+    /* contact box */
+    .contact-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; text-align: center;
+    }
+    .contact-box h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .contact-box p { color: var(--secondary); font-size: 0.9rem; margin-bottom: 24px; }
+    .contact-btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.95rem; padding: 13px 28px;
+      border-radius: 10px; text-decoration: none; transition: opacity .15s;
+    }
+    .contact-btn:hover { opacity: .85; text-decoration: none; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 28px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.85rem; color: var(--secondary); flex-wrap: wrap; gap: 12px;
+    }
+    footer a { color: var(--secondary); }
+    footer a:hover { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a class="nav-home" href="/" aria-label="Back to Quiet Tools">← Quiet Tools</a>
+      <span class="nav-logo">Support</span>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle" aria-label="Language">
+        <button type="button" class="btn-ja" onclick="QT_setLang('ja')">JP</button>
+        <button type="button" class="btn-en" onclick="QT_setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="lang-ja">
+      <h1>サポート</h1>
+      <p class="subtitle">各プロダクトのサポートページへ、またはお問い合わせフォームからご連絡ください。</p>
+
+      <p class="section-label">プロダクト別サポート</p>
+      <div class="products">
+        <a class="product-card" href="/DarumaKnock/support.html">
+          <div>
+            <div class="product-name">DarumaKnock</div>
+            <div class="product-desc">不要なサブスクを整理するアプリ</div>
+          </div>
+          <span class="product-arrow">→</span>
+        </a>
+        <a class="product-card" href="/TimeBud/support.html">
+          <div>
+            <div class="product-name">TimeBud</div>
+            <div class="product-desc">時差調整・日程候補メッセージ生成アプリ</div>
+          </div>
+          <span class="product-arrow">→</span>
+        </a>
+        <a class="product-card" href="/TravelGuard/support.html">
+          <div>
+            <div class="product-name">TravelGuard</div>
+            <div class="product-desc">旅行前リスクチェックリスト管理アプリ</div>
+          </div>
+          <span class="product-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="contact-box">
+        <h2>その他のお問い合わせ</h2>
+        <p>プロダクトに関わらないご質問・ご意見はこちらからどうぞ。<br>通常2〜3営業日以内にご返信します。</p>
+        <a href="https://forms.gle/vUuhkNfouajhQJbn8" class="contact-btn">お問い合わせフォームを開く</a>
+      </div>
+    </div>
+
+    <div class="lang-en">
+      <h1>Support</h1>
+      <p class="subtitle">Visit each product's support page, or use the contact form below.</p>
+
+      <p class="section-label">Product Support</p>
+      <div class="products">
+        <a class="product-card" href="/DarumaKnock/support.html">
+          <div>
+            <div class="product-name">DarumaKnock</div>
+            <div class="product-desc">Subscription management app</div>
+          </div>
+          <span class="product-arrow">→</span>
+        </a>
+        <a class="product-card" href="/TimeBud/support.html">
+          <div>
+            <div class="product-name">TimeBud</div>
+            <div class="product-desc">Time zone scheduling message generator</div>
+          </div>
+          <span class="product-arrow">→</span>
+        </a>
+        <a class="product-card" href="/TravelGuard/support.html">
+          <div>
+            <div class="product-name">TravelGuard</div>
+            <div class="product-desc">Pre-trip risk checklist manager</div>
+          </div>
+          <span class="product-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="contact-box">
+        <h2>Other inquiries</h2>
+        <p>For questions not specific to a product, use the form below.<br>We typically reply within 2–3 business days.</p>
+        <a href="https://forms.gle/vUuhkNfouajhQJbn8" class="contact-btn">Open contact form</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© Quiet Tools</span>
+    <div style="display:flex; gap:18px; flex-wrap:wrap;">
+      <a href="/"><span class="lang-ja">トップ</span><span class="lang-en">Home</span></a>
+      <a href="/privacy.html"><span class="lang-ja">プライバシー</span><span class="lang-en">Privacy</span></a>
+      <a href="/terms.html"><span class="lang-ja">利用規約</span><span class="lang-en">Terms</span></a>
+    </div>
+  </footer>
+
+</body>
+</html>
