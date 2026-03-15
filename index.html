@@ -330,6 +330,26 @@
     }
     .btn:active{ transform: translateY(1px); }
 
+    .btn-sub{
+      display:inline-flex;
+      align-items:center;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(159,178,204,0.65);
+      border: 1px solid rgba(230,238,249,0.07);
+      background: transparent;
+      text-decoration: none;
+      transition: color .15s, border-color .15s;
+      white-space: nowrap;
+    }
+    .btn-sub:hover{
+      color: rgba(159,178,204,1);
+      border-color: rgba(230,238,249,0.18);
+      text-decoration: none;
+    }
+
     /* ── FOOTER ── */
     .footer{
       margin-top: 28px;
@@ -373,8 +393,7 @@
       </div>
 
       <div class="topbar-right">
-        <div class="tagline-pill lang-ja">シンプルだけど、役に立つ。</div>
-        <div class="tagline-pill lang-en">Simple. Useful. Quiet.</div>
+        <div class="tagline-pill">Simple. Useful. Quiet.</div>
 
         <!-- ✅ Added: common PP/Terms links -->
         <div class="policy-links" aria-label="Policies">
@@ -394,9 +413,6 @@
     </div>
 
     <section class="hero">
-      <div class="kicker lang-ja">SIMPLE • USEFUL • QUIET</div>
-      <div class="kicker lang-en">SIMPLE • USEFUL • QUIET</div>
-
       <h1 class="headline lang-ja">
         日々の細かいことを、<span class="cut">静かに片づける。</span>
       </h1>
@@ -417,9 +433,7 @@
     </section>
 
     <section class="card-groups">
-      <div class="card-group">
-        <p class="group-label"><span class="lang-ja">日常</span><span class="lang-en">DAILY</span></p>
-        <div class="cards">
+      <div class="cards">
           <div class="card daruma">
             <div class="badge">
               <span class="badge-dot daruma" aria-hidden="true"></span>
@@ -437,10 +451,10 @@
             </p>
 
             <div class="btns">
-              <a class="btn" href="/DarumaKnock/"><span class="lang-ja">Open</span><span class="lang-en">Open</span></a>
-              <a class="btn" href="/DarumaKnock/support.html"><span class="lang-ja">Support</span><span class="lang-en">Support</span></a>
-              <a class="btn" href="/DarumaKnock/privacy.html"><span class="lang-ja">Privacy</span><span class="lang-en">Privacy</span></a>
-              <a class="btn" href="/DarumaKnock/terms.html"><span class="lang-ja">Terms</span><span class="lang-en">Terms</span></a>
+              <a class="btn" href="/DarumaKnock/"><span class="lang-ja">開く</span><span class="lang-en">Open</span></a>
+              <a class="btn-sub" href="/DarumaKnock/support.html">Support</a>
+              <a class="btn-sub" href="/DarumaKnock/privacy.html">Privacy</a>
+              <a class="btn-sub" href="/DarumaKnock/terms.html">Terms</a>
             </div>
           </div>
 
@@ -461,18 +475,13 @@
             </p>
 
             <div class="btns">
-              <a class="btn" href="/TimeBud/"><span class="lang-ja">Open</span><span class="lang-en">Open</span></a>
-              <a class="btn" href="/TimeBud/support.html"><span class="lang-ja">Support</span><span class="lang-en">Support</span></a>
-              <a class="btn" href="/TimeBud/privacy.html"><span class="lang-ja">Privacy</span><span class="lang-en">Privacy</span></a>
-              <a class="btn" href="/TimeBud/terms.html"><span class="lang-ja">Terms</span><span class="lang-en">Terms</span></a>
+              <a class="btn" href="/TimeBud/"><span class="lang-ja">開く</span><span class="lang-en">Open</span></a>
+              <a class="btn-sub" href="/TimeBud/support.html">Support</a>
+              <a class="btn-sub" href="/TimeBud/privacy.html">Privacy</a>
+              <a class="btn-sub" href="/TimeBud/terms.html">Terms</a>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="card-group">
-        <p class="group-label"><span class="lang-ja">記録</span><span class="lang-en">MEMORY</span></p>
-        <div class="cards">
           <div class="card travelguard">
             <div class="badge">
               <span class="badge-dot travelguard" aria-hidden="true"></span>
@@ -490,10 +499,10 @@
             </p>
 
             <div class="btns">
-              <a class="btn" href="/TravelGuard/"><span class="lang-ja">Open</span><span class="lang-en">Open</span></a>
-              <a class="btn" href="/TravelGuard/support.html"><span class="lang-ja">Support</span><span class="lang-en">Support</span></a>
-              <a class="btn" href="/TravelGuard/privacy.html"><span class="lang-ja">Privacy</span><span class="lang-en">Privacy</span></a>
-              <a class="btn" href="/TravelGuard/terms.html"><span class="lang-ja">Terms</span><span class="lang-en">Terms</span></a>
+              <a class="btn" href="/TravelGuard/"><span class="lang-ja">開く</span><span class="lang-en">Open</span></a>
+              <a class="btn-sub" href="/TravelGuard/support.html">Support</a>
+              <a class="btn-sub" href="/TravelGuard/privacy.html">Privacy</a>
+              <a class="btn-sub" href="/TravelGuard/terms.html">Terms</a>
             </div>
           </div>
 
@@ -514,13 +523,12 @@
             </p>
 
             <div class="btns">
-              <a class="btn" href="/Dessin/"><span class="lang-ja">Open</span><span class="lang-en">Open</span></a>
-              <a class="btn" href="/Dessin/support.html"><span class="lang-ja">Support</span><span class="lang-en">Support</span></a>
-              <a class="btn" href="/Dessin/privacy.html"><span class="lang-ja">Privacy</span><span class="lang-en">Privacy</span></a>
-              <a class="btn" href="/Dessin/terms.html"><span class="lang-ja">Terms</span><span class="lang-en">Terms</span></a>
+              <a class="btn" href="/Dessin/"><span class="lang-ja">開く</span><span class="lang-en">Open</span></a>
+              <a class="btn-sub" href="/Dessin/support.html">Support</a>
+              <a class="btn-sub" href="/Dessin/privacy.html">Privacy</a>
+              <a class="btn-sub" href="/Dessin/terms.html">Terms</a>
             </div>
           </div>
-        </div>
       </div>
     </section>
 
