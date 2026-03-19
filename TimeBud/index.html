@@ -146,18 +146,20 @@
       overflow-wrap: break-word;
     }
 
-    .coming-soon-btn {
+    .app-store-btn {
       display: inline-block;
-      background: rgba(59,130,246,0.12);
-      color: rgba(59,130,246,0.7);
+      background: rgba(59,130,246,0.15);
+      color: rgba(59,130,246,0.95);
       font-weight: 700;
       font-size: 0.95rem;
       padding: 14px 28px;
       border-radius: 14px;
-      border: 1px solid rgba(59,130,246,0.25);
-      cursor: default;
-      user-select: none;
+      border: 1px solid rgba(59,130,246,0.35);
+      text-decoration: none;
+      transition: background .15s, border-color .15s, opacity .15s;
     }
+    .app-store-btn:hover { opacity: .9; text-decoration: none; }
+    .app-store-btn:active { transform: translateY(1px); }
 
     /* ── STEPS ── */
     .steps {
@@ -316,10 +318,10 @@
       <p class="lang-ja">候補時間を入力するだけで、すぐ送れるメッセージブロックを生成。時差調整を最短に。</p>
       <p class="lang-en">Type candidate times and get a ready-to-send message block. Time zones, handled fast.</p>
 
-      <span class="coming-soon-btn">
-        <span class="lang-ja">近日公開</span>
-        <span class="lang-en">Coming Soon</span>
-      </span>
+      <a href="https://apps.apple.com/jp/app/timebud/id6760578935" class="app-store-btn" target="_blank" rel="noopener">
+        <span class="lang-ja">App Store でダウンロード</span>
+        <span class="lang-en">Download on the App Store</span>
+      </a>
     </section>
   </div>
 
