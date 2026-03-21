@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用規約 / Terms of Service — redoCebiv</title>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const fromQuery = params.get("lang");
+      const saved = localStorage.getItem("qt_lang");
+      const lang = (fromQuery === "en" || fromQuery === "ja") ? fromQuery : (saved || "ja");
+
+      function apply(next) {
+        document.documentElement.setAttribute("data-lang", next);
+        localStorage.setItem("qt_lang", next);
+      }
+
+      window.QT_setLang = function (next) {
+        const url = new URL(location.href);
+        url.searchParams.set("lang", next);
+        history.replaceState(null, "", url.toString());
+        apply(next);
+      };
+
+      apply(lang);
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0B1220; --card: #0F1A2F; --border: #1E335A;
+      --accent: #3B82F6; --primary: #E6EEF9; --secondary: #9FB2CC;
+      --warning-bg: #1a1500; --warning-border: #F59E0B;
+    }
+    body { background: var(--bg); color: var(--primary); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.7; }
+    a { color: var(--accent); }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; border-bottom: 1px solid var(--border);
+      gap: 16px; flex-wrap: wrap;
+    }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--primary); }
+    .nav-right { display:flex; align-items:center; gap: 16px; flex-wrap: wrap; }
+    .nav-links { display: flex; gap: 24px; font-size: 0.9rem; }
+    .nav-links a { color: var(--secondary); text-decoration: none; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .lang-toggle { display:flex; gap: 8px; align-items:center; }
+    .lang-toggle button {
+      appearance: none; border: 1px solid var(--border); background: transparent;
+      color: var(--secondary); border-radius: 999px; padding: 8px 12px;
+      font-size: 0.85rem; cursor: pointer; transition: color .15s, border-color .15s, background .15s;
+    }
+    .lang-toggle button:hover { color: var(--primary); border-color: rgba(230,238,249,0.35); }
+    html[data-lang="ja"] .btn-ja,
+    html[data-lang="en"] .btn-en {
+      background: rgba(230,238,249,0.08); color: var(--primary); border-color: rgba(230,238,249,0.25);
+    }
+
+    [data-lang="ja"] .lang-en { display: none !important; }
+    [data-lang="en"] .lang-ja { display: none !important; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .meta { color: var(--secondary); font-size: 0.85rem; margin-bottom: 48px; }
+    h2 { font-size: 1rem; font-weight: 700; margin: 36px 0 10px; color: var(--primary); }
+    h3 { font-size: 0.93rem; font-weight: 700; margin: 20px 0 6px; color: var(--primary); }
+    p { color: var(--secondary); font-size: 0.93rem; margin-bottom: 12px; }
+    ul { color: var(--secondary); font-size: 0.93rem; margin: 0 0 12px 20px; }
+    ul li { margin-bottom: 6px; }
+
+    .callout {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px;
+      font-size: 0.9rem; color: var(--secondary); margin: 14px 0;
+    }
+    .callout.warning {
+      background: var(--warning-bg); border-color: var(--warning-border); color: var(--primary);
+    }
+    .callout.warning strong { color: #F59E0B; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--secondary); flex-wrap: wrap; gap: 12px; }
+    footer a { color: var(--secondary); text-decoration: none; }
+    footer a:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">redoCebiv</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="support.html"><span class="lang-ja">サポート</span><span class="lang-en">Support</span></a>
+        <a href="privacy.html"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy</span></a>
+      </div>
+      <div class="lang-toggle" aria-label="Language">
+        <button type="button" class="btn-ja" onclick="QT_setLang('ja')">JP</button>
+        <button type="button" class="btn-en" onclick="QT_setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- JP -->
+    <div class="lang-ja">
+      <h1>利用規約</h1>
+      <p class="meta">有効日: 2026年3月21日</p>
+
+      <p>redoCebiv（以下「本サービス」）をご利用いただくことで、本利用規約に同意したものとみなされます。同意いただけない場合は、本サービスのご利用をお控えください。</p>
+
+      <h2>本サービスの性質</h2>
+      <h3>AIによるコード解析サービス</h3>
+      <p>本サービスは、ユーザーがアップロードしたコードをAIが解析し、機能トレース・変更候補・学習課題を提供するWebサービスです。コードを理解する支援を目的としており、コードの動作や品質を保証するものではありません。</p>
+
+      <div class="callout warning">
+        <strong>重要：</strong> 本サービスが提供するトレース・変更候補・課題・解説はAIによる自動生成です。内容の正確性・完全性を保証するものではありません。実際の変更作業はユーザー自身の判断と責任において行ってください。
+      </div>
+
+      <h2>アップロードファイルについて</h2>
+      <h3>コードの送信</h3>
+      <p>ZIPファイルとしてアップロードされたコードは、解析処理のためAnthropicのAPIに送信されます。送信されたコードはサービス提供のみに使用し、第三者への提供・広告目的での利用は行いません。</p>
+
+      <h3>知的財産権</h3>
+      <p>アップロードされたコードの知的財産権はユーザーに帰属します。本サービスへのアップロードによって、その権利が移転することはありません。</p>
+
+      <h3>データの保持期間</h3>
+      <p>アップロードされたZIPファイルは解析完了後に削除されます。解析に使用したコードファイルは、最後にご利用いただいた日から30日後に自動削除されます。</p>
+
+      <h2>クレジット制について</h2>
+      <h3>消費と返金</h3>
+      <p>本サービスはクレジット制を採用しています。消費されたクレジットは原則として返金しません。ただし、AI処理の失敗・保存エラーなど、サービス側の原因による場合は自動的に返金されます。</p>
+
+      <h3>月次リセット</h3>
+      <p>クレジットは各プランに応じて毎月付与されます。未使用クレジットは翌月に繰り越されません。</p>
+
+      <h2>有料プラン（サブスクリプション）</h2>
+      <h3>自動更新</h3>
+      <p>有料プランは自動更新サブスクリプションです。購入した場合、以下の条件が適用されます。</p>
+      <ul>
+        <li>料金は決済処理サービスを通じて請求されます。</li>
+        <li>現在の期間終了の前にキャンセルしない限り、自動的に更新されます。</li>
+        <li>キャンセルはアカウント設定の「サブスクリプション管理」から行えます。</li>
+      </ul>
+
+      <h2>禁止事項</h2>
+      <p>以下の行為を禁止します。</p>
+      <ul>
+        <li>他者の著作物を無断でアップロードすること</li>
+        <li>本サービスへの不正アクセス・過度な負荷をかける行為</li>
+        <li>本サービスを通じて取得した情報の無断転載・商業利用</li>
+        <li>法令または公序良俗に反する行為</li>
+      </ul>
+
+      <h2>免責事項</h2>
+      <h3>現状のまま提供（As-Is）</h3>
+      <p>本サービスは「現状のまま」提供されます。動作の継続性、特定目的への適合性、正確性について、いかなる保証もいたしません。</p>
+
+      <h3>機能の変更</h3>
+      <p>開発者は本サービスの機能・コンテンツをいつでも予告なく変更、追加、削除することができます。</p>
+
+      <h2>規約の変更</h2>
+      <p>本規約は将来変更される場合があります。重要な変更がある場合は、本ページにて通知します。変更後も継続してご利用いただいた場合、変更後の規約に同意したものとみなされます。</p>
+
+      <h2>準拠法</h2>
+      <p>本規約は日本法に準拠し、解釈されるものとします。</p>
+
+      <h2>お問い合わせ</h2>
+      <p>本規約に関するご質問は、<a href="support.html">サポートページ</a>のお問い合わせフォームよりご連絡ください。</p>
+    </div>
+
+    <!-- EN -->
+    <div class="lang-en">
+      <h1>Terms of Service</h1>
+      <p class="meta">Effective Date: March 21, 2026</p>
+
+      <p>By using redoCebiv ("the Service"), you agree to these Terms of Service. If you do not agree, please discontinue use of the Service.</p>
+
+      <h2>Nature of the Service</h2>
+      <h3>AI-Powered Code Analysis</h3>
+      <p>The Service analyzes code uploaded by users using AI, and provides feature traces, change suggestions, and learning challenges. It is designed to help you understand your code — it does not guarantee the behavior or quality of your code.</p>
+
+      <div class="callout warning">
+        <strong>Important:</strong> Traces, change suggestions, challenges, and explanations provided by the Service are AI-generated. The developer makes no guarantee of accuracy or completeness. Any modifications to your codebase are made at your own judgment and risk.
+      </div>
+
+      <h2>Uploaded Files</h2>
+      <h3>Code Transmission</h3>
+      <p>Code uploaded as a ZIP file is sent to Anthropic's API for analysis. Transmitted code is used solely to provide the Service and is never shared with third parties or used for advertising.</p>
+
+      <h3>Intellectual Property</h3>
+      <p>All intellectual property rights in uploaded code remain with the user. Uploading to the Service does not transfer any ownership rights.</p>
+
+      <h3>Data Retention</h3>
+      <p>ZIP files are deleted upon completion of analysis. Code files used for analysis are automatically deleted 30 days after your last use of the project.</p>
+
+      <h2>Credits</h2>
+      <h3>Consumption and Refunds</h3>
+      <p>The Service uses a credit system. Consumed credits are generally non-refundable. However, credits are automatically refunded if consumption was caused by a Service-side failure, such as an AI processing error or save failure.</p>
+
+      <h3>Monthly Reset</h3>
+      <p>Credits are granted monthly according to your plan. Unused credits do not carry over to the following month.</p>
+
+      <h2>Paid Plans (Subscriptions)</h2>
+      <h3>Auto-Renewal</h3>
+      <p>Paid plans are auto-renewing subscriptions. When you purchase a plan, the following terms apply:</p>
+      <ul>
+        <li>Payment is charged through a third-party payment processor.</li>
+        <li>The subscription automatically renews unless canceled before the end of the current period.</li>
+        <li>You can cancel at any time from "Subscription Management" in your account settings.</li>
+      </ul>
+
+      <h2>Prohibited Activities</h2>
+      <p>The following activities are prohibited:</p>
+      <ul>
+        <li>Uploading code owned by others without authorization</li>
+        <li>Unauthorized access or placing excessive load on the Service</li>
+        <li>Reproducing or commercially using content obtained through the Service without permission</li>
+        <li>Any activity that violates applicable laws or public order</li>
+      </ul>
+
+      <h2>Disclaimer of Warranties</h2>
+      <h3>Provided "As Is"</h3>
+      <p>The Service is provided "as is" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or accuracy.</p>
+
+      <h3>Feature Changes</h3>
+      <p>The developer reserves the right to modify, add, or remove features at any time without prior notice.</p>
+
+      <h2>Changes to These Terms</h2>
+      <p>These Terms may be updated in the future. We will notify you of any material changes on this page. Continued use of the Service after changes constitutes your acceptance of the revised Terms.</p>
+
+      <h2>Governing Law</h2>
+      <p>These Terms are governed by and construed in accordance with the laws of Japan.</p>
+
+      <h2>Contact</h2>
+      <p>For questions about these Terms, please use the contact form on the <a href="support.html">Support page</a>.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 redoCebiv</span>
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <a href="../index.html"><span class="lang-ja">トップ</span><span class="lang-en">Home</span></a>
+      <a href="support.html"><span class="lang-ja">サポート</span><span class="lang-en">Support</span></a>
+      <a href="privacy.html"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy</span></a>
+    </div>
+  </footer>
+
+</body>
+</html>

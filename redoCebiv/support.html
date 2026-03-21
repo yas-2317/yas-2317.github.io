@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サポート / Support — redoCebiv</title>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const fromQuery = params.get("lang");
+      const saved = localStorage.getItem("qt_lang");
+      const lang = (fromQuery === "en" || fromQuery === "ja") ? fromQuery : (saved || "ja");
+
+      function apply(next) {
+        document.documentElement.setAttribute("data-lang", next);
+        localStorage.setItem("qt_lang", next);
+      }
+
+      window.QT_setLang = function (next) {
+        const url = new URL(location.href);
+        url.searchParams.set("lang", next);
+        history.replaceState(null, "", url.toString());
+        apply(next);
+      };
+
+      apply(lang);
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0B1220; --card: #0F1A2F; --border: #1E335A;
+      --accent: #3B82F6; --primary: #E6EEF9; --secondary: #9FB2CC;
+    }
+    body { background: var(--bg); color: var(--primary); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    a { color: var(--accent); }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; border-bottom: 1px solid var(--border);
+      gap: 16px; flex-wrap: wrap;
+    }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--primary); }
+    .nav-right { display:flex; align-items:center; gap: 16px; flex-wrap: wrap; }
+    .nav-links { display: flex; gap: 24px; font-size: 0.9rem; }
+    .nav-links a { color: var(--secondary); text-decoration: none; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .lang-toggle { display:flex; gap: 8px; align-items:center; }
+    .lang-toggle button {
+      appearance: none; border: 1px solid var(--border); background: transparent;
+      color: var(--secondary); border-radius: 999px; padding: 8px 12px;
+      font-size: 0.85rem; cursor: pointer; transition: color .15s, border-color .15s, background .15s;
+    }
+    .lang-toggle button:hover { color: var(--primary); border-color: rgba(230,238,249,0.35); }
+    html[data-lang="ja"] .btn-ja,
+    html[data-lang="en"] .btn-en {
+      background: rgba(230,238,249,0.08); color: var(--primary); border-color: rgba(230,238,249,0.25);
+    }
+
+    [data-lang="ja"] .lang-en { display: none !important; }
+    [data-lang="en"] .lang-ja { display: none !important; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .subtitle { color: var(--secondary); margin-bottom: 48px; }
+
+    .faq-section h2 {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+    details {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+    }
+    details[open] { border-color: var(--accent); }
+    summary {
+      padding: 18px 20px; font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--accent); font-size: 1.2rem; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    .faq-answer {
+      padding: 16px 20px 18px; font-size: 0.9rem; color: var(--secondary); line-height: 1.7;
+      border-top: 1px solid var(--border);
+    }
+    .faq-answer strong { color: var(--primary); }
+
+    .contact-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; text-align: center;
+    }
+    .contact-box h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .contact-box p { color: var(--secondary); font-size: 0.9rem; margin-bottom: 24px; }
+    .contact-btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.95rem; padding: 13px 28px;
+      border-radius: 10px; text-decoration: none; transition: opacity .15s;
+    }
+    .contact-btn:hover { opacity: .85; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 28px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.85rem; color: var(--secondary); flex-wrap: wrap; gap: 12px;
+    }
+    footer a { color: var(--secondary); text-decoration: none; }
+    footer a:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">redoCebiv</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="privacy.html"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy</span></a>
+        <a href="terms.html"><span class="lang-ja">利用規約</span><span class="lang-en">Terms</span></a>
+      </div>
+      <div class="lang-toggle" aria-label="Language">
+        <button type="button" class="btn-ja" onclick="QT_setLang('ja')">JP</button>
+        <button type="button" class="btn-en" onclick="QT_setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- JP -->
+    <div class="lang-ja">
+      <h1>サポート</h1>
+      <p class="subtitle">よくある質問と使い方のガイドです。</p>
+
+      <div class="faq-section">
+        <h2>よくある質問</h2>
+        <div class="faq-list">
+
+          <details>
+            <summary>解析が失敗・途中で止まった場合、クレジットは戻りますか？</summary>
+            <div class="faq-answer">
+              <strong>はい、自動的に返金されます。</strong> AI処理の失敗・保存エラーなど、サービス側の原因による場合、消費されたクレジットは自動的に返金されます。返金はリアルタイムで反映されます。<br><br>
+              解析が「処理中」のまま長時間経過している場合は、お問い合わせフォームよりご連絡ください。
+            </div>
+          </details>
+
+          <details>
+            <summary>対応しているスタックを教えてください</summary>
+            <div class="faq-answer">
+              現在対応しているスタックは以下の通りです：<br><br>
+              <strong>Web:</strong> Next.js / React / TypeScript / Tailwind CSS / Vue / Nuxt / Svelte / SvelteKit<br>
+              <strong>Mobile:</strong> Swift / SwiftUI / Flutter<br>
+              <strong>Backend:</strong> Ruby on Rails / Python<br><br>
+              対応スタックは順次拡大予定です。
+            </div>
+          </details>
+
+          <details>
+            <summary>ZIPファイルに制限はありますか？</summary>
+            <div class="faq-answer">
+              アップロード前に <strong>node_modules / .git / build成果物</strong> を除外してください。これらが含まれると解析精度が下がり、クレジットが無駄になります。<br><br>
+              目安: ソースファイルのみのプロジェクトは通常1〜5MB程度です。
+            </div>
+          </details>
+
+          <details>
+            <summary>プランの違いを教えてください</summary>
+            <div class="faq-answer">
+              <strong>Wanderer（無料）:</strong> 月3クレジット付与<br>
+              <strong>Tracer（$5/月）:</strong> 月80クレジット付与<br>
+              <strong>Navigator（$12/月）:</strong> 月250クレジット付与<br><br>
+              クレジット消費の目安：<br>
+              初回解析（ZIPアップロード）: 5cr / トレース生成: 1cr / 変更候補: 2cr / 課題採点: 無料
+            </div>
+          </details>
+
+          <details>
+            <summary>サブスクリプションのキャンセル方法は？</summary>
+            <div class="faq-answer">
+              アカウント設定の<strong>「サブスクリプション管理」</strong>からいつでもキャンセルできます。キャンセル後は現在の期間終了まで有料プランをご利用いただけます。<br><br>
+              App Storeからは管理できません。
+            </div>
+          </details>
+
+          <details>
+            <summary>アップロードしたコードはどこに送られますか？</summary>
+            <div class="faq-answer">
+              解析処理のため、コードの内容はAnthropicのAPIに送信されます。送信されたコードはサービス提供のみに使用され、学習・広告目的での利用はされません。<br><br>
+              ZIPファイル自体は解析完了後に削除されます。コードファイルは最終アクセスから30日後に自動削除されます。
+            </div>
+          </details>
+
+          <details>
+            <summary>30日間使わないとどうなりますか？</summary>
+            <div class="faq-answer">
+              最後にプロジェクトを利用した日から30日後に、コードファイルの内容が自動削除されます。<br><br>
+              削除後は<strong>新しいトレース・変更候補の生成ができなくなります</strong>が、過去のトレース履歴・課題結果・成長トラッキングは引き続きご覧いただけます。<br><br>
+              再度ご利用になる場合は、ZIPを再アップロードするだけで解析を再開できます（5cr必要）。
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <div class="contact-box">
+        <h2>解決しない場合はこちら</h2>
+        <p>お問い合わせフォームからご連絡ください。<br>通常2〜3営業日以内にご返信します。</p>
+        <a href="https://forms.gle/TYSjSNJfHarTRZYMA" class="contact-btn">お問い合わせフォームを開く</a>
+      </div>
+    </div>
+
+    <!-- EN -->
+    <div class="lang-en">
+      <h1>Support</h1>
+      <p class="subtitle">FAQs and a quick guide to using redoCebiv.</p>
+
+      <div class="faq-section">
+        <h2>FAQs</h2>
+        <div class="faq-list">
+
+          <details>
+            <summary>If analysis fails or gets stuck, will my credits be refunded?</summary>
+            <div class="faq-answer">
+              <strong>Yes, automatically.</strong> If analysis fails due to a Service-side issue (AI error, save failure, etc.), consumed credits are automatically refunded in real time.<br><br>
+              If your project has been stuck in "analyzing" for a long time, please contact us via the form below.
+            </div>
+          </details>
+
+          <details>
+            <summary>What stacks are supported?</summary>
+            <div class="faq-answer">
+              Currently supported stacks:<br><br>
+              <strong>Web:</strong> Next.js / React / TypeScript / Tailwind CSS / Vue / Nuxt / Svelte / SvelteKit<br>
+              <strong>Mobile:</strong> Swift / SwiftUI / Flutter<br>
+              <strong>Backend:</strong> Ruby on Rails / Python<br><br>
+              More stacks are being added regularly.
+            </div>
+          </details>
+
+          <details>
+            <summary>Are there any restrictions on the ZIP file?</summary>
+            <div class="faq-answer">
+              Before uploading, please <strong>exclude node_modules, .git, and build artifacts</strong>. Including them reduces analysis accuracy and wastes credits.<br><br>
+              A typical source-only project is around 1–5 MB.
+            </div>
+          </details>
+
+          <details>
+            <summary>What's the difference between plans?</summary>
+            <div class="faq-answer">
+              <strong>Wanderer (Free):</strong> 3 credits/month<br>
+              <strong>Tracer ($5/month):</strong> 80 credits/month<br>
+              <strong>Navigator ($12/month):</strong> 250 credits/month<br><br>
+              Credit costs: Initial analysis (ZIP upload): 5cr / Trace generation: 1cr / Change suggestion: 2cr / Challenge grading: Free
+            </div>
+          </details>
+
+          <details>
+            <summary>How do I cancel my subscription?</summary>
+            <div class="faq-answer">
+              You can cancel anytime from <strong>"Subscription Management"</strong> in your account settings. After canceling, you retain access to your paid plan until the end of the current billing period.<br><br>
+              Subscriptions cannot be managed through the App Store.
+            </div>
+          </details>
+
+          <details>
+            <summary>Where does my uploaded code get sent?</summary>
+            <div class="faq-answer">
+              Your code is sent to Anthropic's API for analysis. It is used solely to provide the Service and is never used for training or advertising purposes.<br><br>
+              ZIP files are deleted after analysis completes. Code file contents are automatically deleted 30 days after your last use of the project.
+            </div>
+          </details>
+
+          <details>
+            <summary>What happens if I don't use a project for 30 days?</summary>
+            <div class="faq-answer">
+              Code file contents are automatically deleted 30 days after your last use of the project.<br><br>
+              After deletion, <strong>new traces and change suggestions cannot be generated</strong>, but your past traces, challenge results, and progress tracking remain accessible.<br><br>
+              To resume, simply re-upload the ZIP file (5 credits required).
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <div class="contact-box">
+        <h2>Still need help?</h2>
+        <p>Contact us via the form below.<br>We typically reply within 2–3 business days.</p>
+        <a href="https://forms.gle/TYSjSNJfHarTRZYMA" class="contact-btn">Open contact form</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 redoCebiv</span>
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <a href="../index.html"><span class="lang-ja">トップ</span><span class="lang-en">Home</span></a>
+      <a href="privacy.html"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy</span></a>
+      <a href="terms.html"><span class="lang-ja">利用規約</span><span class="lang-en">Terms</span></a>
+    </div>
+  </footer>
+
+</body>
+</html>
